@@ -7,6 +7,15 @@ const UserSchema = mongoose.Schema({
     password: String,
     gender: String,
     dob: String,
+    verificationCode: String,
+    isVerified: {
+        type: Boolean,
+        default: false
+    },
+    role: {
+        type: Number,
+        default: 2 //2 for user, 1 for admin, 0 for super admin
+    },
     profile: {
         type: String,
         default: 'https://picsum.photos/200/300'

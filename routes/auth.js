@@ -1,7 +1,6 @@
 import express from 'express';
 import { check } from 'express-validator';
-import { signUp, signIn } from '../api/user';
-
+import { signUp, signIn, verify } from '../api/user';
 const app = express();
 
 app.post(
@@ -21,5 +20,11 @@ app.post(
     ],
     signIn
 );
+
+app.post('/verify-email',
+    [check("vf", "Verification Faild!"),
+    check("id", "User Not Found!"),
+    ],
+    verify)
 
 export default app;
