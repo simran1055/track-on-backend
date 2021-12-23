@@ -49,9 +49,8 @@ export const signIn = async (req, res) => {
         }
 
         let payload = req.body;
-        let user = await User.findOne({ email: payload.email }).populate({
-            path: "projectId"
-        }, { usersId: 0, issues: 0 })
+        let user = await User.findOne({ email: payload.email }).populate("projectId"
+            , { usersId: 0, issues: 0 })
         if (!user) {
             return res.status(400).send({ error: "Email Id not registered with us." })
         }
